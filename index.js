@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 main().catch((err) => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.URL);
+  await mongoose.connect(process.env.MONGO_URL);
   console.log("Database Connected!");
 }
 // Serve static files
