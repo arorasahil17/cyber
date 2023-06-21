@@ -7,6 +7,8 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 // Parse JSON and URL-encoded bodies
+// Serve static files
+app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -16,9 +18,6 @@ async function main() {
   await mongoose.connect(process.env.MONGO_URL);
   console.log("Database Connected!");
 }
-// Serve static files
-app.use(express.static("public"));
-
 const userSchema = new Schema({
   name: { type: String, required: [true, "name is required"] },
   email: {
