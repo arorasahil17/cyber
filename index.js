@@ -40,6 +40,10 @@ const userSchema = new Schema({
 
 const User = new mongoose.model("User", userSchema);
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+
 app.post("/send", async (req, res) => {
   try {
     const { name, email, contact } = req.body;
